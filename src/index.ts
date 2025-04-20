@@ -237,7 +237,7 @@ export default {
         // And only v3 has the `embed` field in the response
         let isZiplineV4 = false;
         if (response.headers.get("Content-Type")?.includes("application/json")) {
-            const data = await response.json() as any;
+            const data = await response.clone().json() as any;
             if (data && "embed" in data) {
                 isZiplineV4 = false;
             }
